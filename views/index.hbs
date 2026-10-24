@@ -1,2 +1,68 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<section class="catalog-section" aria-labelledby="catalog-title">
+  <div class="catalog-content">
+    <p class="section-eyebrow">Despensa Ulises</p>
+    <h1 id="catalog-title">¡Enterate de nuestro catálogo!</h1>
+    <p>
+      Encontrá productos para tu casa y conocé las ofertas y novedades de la despensa.
+    </p>
+    <a class="button button-light" href="/catalogo">Ver catálogo</a>
+  </div>
+</section>
+
+<section class="news-section" id="novedades" aria-labelledby="news-title">
+  <div class="contact-heading">
+    <p class="section-eyebrow">Lo nuevo de la despensa</p>
+    <h2 id="news-title">Novedades y ofertas</h2>
+    <p>Enterate de las últimas noticias de Despensa Ulises.</p>
+  </div>
+
+  {{#if novedades.length}}
+    <div class="news-grid">
+      {{#each novedades}}
+        <article class="news-card">
+          <p class="news-date">{{fecha}}</p>
+          <h3>{{titulo}}</h3>
+          <p>{{descripcion}}</p>
+        </article>
+      {{/each}}
+    </div>
+  {{else}}
+    <p class="news-empty">Pronto vamos a compartir novedades y ofertas. ¡Volvé a visitarnos!</p>
+  {{/if}}
+</section>
+
+<section class="contact-section" id="contacto" aria-labelledby="contact-title">
+  <div class="contact-heading">
+    <p class="section-eyebrow">Estamos para ayudarte</p>
+    <h2 id="contact-title">Encontranos y contactanos</h2>
+    <p>Visitá nuestro local o dejanos tu consulta.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="map-card">
+      <iframe
+        src="https://www.google.com/maps?q=Av.%20Libertad%2C%20Suncho%20Corral%2C%20Santiago%20del%20Estero%2C%20Argentina&output=embed"
+        title="Mapa de Av. Libertad, Suncho Corral, Santiago del Estero"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="form-card">
+      <h3>Escribinos</h3>
+      <p class="form-note">Este formulario es una muestra y todavía no envía mensajes.</p>
+      <form>
+        <label for="contact-name">Nombre</label>
+        <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required>
+
+        <label for="contact-email">Correo electrónico</label>
+        <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+
+        <label for="contact-message">Mensaje</label>
+        <textarea id="contact-message" name="message" rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+
+        <button class="button button-red" type="button" disabled>Envío próximamente</button>
+      </form>
+    </div>
+  </div>
+</section>

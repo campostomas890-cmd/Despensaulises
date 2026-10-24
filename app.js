@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -8,6 +9,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var whatsappNumber = (process.env.WHATSAPP_NUMBER || '').replace(/\D/g, '');
+
+if (whatsappNumber && (whatsappNumber.length < 8 || whatsappNumber.length > 15)) {
+  console.warn('WHATSAPP_NUMBER must contain 8 to 15 digits, including country code.');
+  whatsappNumber = '';
+}
+
+app.locals.whatsappNumber = whatsappNumber;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

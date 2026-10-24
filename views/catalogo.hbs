@@ -1,0 +1,30 @@
+<section class="catalog-page" aria-labelledby="catalog-page-title">
+  <div class="catalog-page-heading">
+    <p class="section-eyebrow">Despensa Ulises</p>
+    <h1 id="catalog-page-title">Nuestro catálogo</h1>
+    <p>Consultá los precios y las ofertas vigentes.</p>
+  </div>
+
+  {{#if documentos.length}}
+    <div class="document-grid">
+      {{#each documentos}}
+        <article class="document-card">
+          <div>
+            <p class="document-format">{{formato}}</p>
+            <h2>{{nombre}}</h2>
+          </div>
+          <a class="button button-red" href="{{archivo}}" target="_blank" rel="noopener">
+            Ver archivo
+          </a>
+        </article>
+      {{/each}}
+    </div>
+  {{else}}
+    <div class="catalog-empty">
+      <h2>Estamos preparando el catálogo</h2>
+      <p>Pronto vas a encontrar acá nuestras listas de precios y ofertas.</p>
+    </div>
+  {{/if}}
+
+  <a class="catalog-back-link" href="/">← Volver al inicio</a>
+</section>
